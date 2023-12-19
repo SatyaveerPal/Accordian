@@ -1,0 +1,66 @@
+<div id="accordion2">
+<h3>Dynamic accordian</h3>
+<div>
+<p>Lorem ipsum</p>
+</div>
+</div>
+
+
+
+
+
+$( function() {
+    $( "#accordion2" ).accordion();
+});
+
+(function( $, undefined ) {
+
+$.widget( "ab.accordion", $.ui.accordion, {
+
+    refresh: function() {
+
+        this._super( "refresh" );
+
+        if ( this.options.heightStyle !== "content" ) {
+            return;
+        }
+
+        this.headers.next().each( function() {
+
+            if ( $( this ).css( "height" ) ) {
+                $( this ).css( "height", "" );
+            }
+
+        });
+
+    }
+
+});
+
+})(jQuery);
+
+$(function() {
+
+$( "#accordion2" ).accordion();
+
+for ( var i=0; i<0; i++ ){
+    $( "ul" ).append( "<li>nth item</li>" );
+}
+
+$( "#accordion2" ).accordion( "option", "heightStyle", "content" )
+                 .accordion( "refresh" );
+
+});
+
+$(function() {
+
+$( "#accordion-1" ).accordion();
+
+for ( var i=0; i<0; i++ ){
+    $( "ul" ).append( "<li>nth item</li>" );
+}
+
+$( "#accordion-1" ).accordion( "option", "heightStyle", "content" )
+                 .accordion( "refresh" );
+
+});
